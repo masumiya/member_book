@@ -34,6 +34,8 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'devise'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
@@ -43,6 +45,8 @@ group :development, :test do
   gem 'database_rewinder'
   gem 'factory_girl_rails'
   gem 'faker'
+  gem 'guard-rspec', require: false
+  gem 'guard-rubocop', require: false
   gem 'rails-controller-testing'
   gem 'rspec'
   gem 'rspec-core'
@@ -54,8 +58,6 @@ group :development, :test do
   gem 'simplecov', require: false, group: :test
   gem 'turnip'
   gem 'webmock'
-  gem 'guard-rspec', require: false
-  gem 'guard-rubocop', require: false
 end
 
 group :development do

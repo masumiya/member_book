@@ -4,9 +4,12 @@ Rails:
 AllCops:
   Exclude:
     - 'db/**/*'
+    - 'Guardfile'
 
 Metrics/LineLength:
   Max: 130
+  Exclude:
+    - 'config/initializers/devise.rb'
 
 Style/Documentation:
   Exclude:
