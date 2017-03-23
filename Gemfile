@@ -54,6 +54,8 @@ group :development, :test do
   gem 'simplecov', require: false, group: :test
   gem 'turnip'
   gem 'webmock'
+  gem 'guard-rspec', require: false
+  gem 'guard-rubocop', require: false
 end
 
 group :development do
