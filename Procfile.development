@@ -1,0 +1,2 @@
+web: rails s -b $IP -p $PORT -e development
+rails_log: touch log/development.log && tail -f log/development.log
