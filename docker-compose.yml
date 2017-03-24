@@ -1,0 +1,41 @@
+version: "2"
+services:
+  rdb-dev:
+    build: ./Dockerfile_pgsql
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: root_pass
+      POSTGRES_USER: root_user
+      POSTGRES_DB: dev_db
+      LANG: ja_JP.utf8
+
+  session-db:
+    image: redis:alpine
+
+  mailcatcher:
+    image: schickling/mailcatcher
+    ports:
+      - 20080:1080
+
+  member-book:
+    build: .
+    links:
+      - rdb-dev
+      - session-db
+    depends_on:
+      - rdb-dev
+      - session-db
+    volumes:
+      - .:/var/www/app
+    environment:
+      RAILS_ENV: development
+      REDIS_URL: redis://session-db:6379/0
+      DATABASE_NAME: dev_db
+      DATABASE_HOST: rdb-dev
+      MAIL_HOST: localhost
+      MAIL_ADDRESS: mailcatcher
+      MAIL_PORT: 1025
+    working_dir: /var/www/app
+    ports:
+      - 5000:5000
