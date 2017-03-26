@@ -1,7 +1,7 @@
 version: "2"
 services:
   rdb-dev:
-    build: ./Dockerfile_pgsql
+    image: postgres:alpine
     ports:
       - 5432:5432
     environment:
